@@ -1,0 +1,140 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[table]{xcolor}
+\usepackage{ltablex}
+\usepackage{adjustbox}
+\usepackage[style=apa,backend=biber,maxbibnames=21]{biblatex}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage[left=1.5in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+\usepackage{arydshln}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage[title]{appendix}
+
+% change the font name here
+%\setmainfont{Calibri}
+\setmainfont{Times New Roman}
+
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\renewcommand\arraystretch{1.2}
+
+% paragaphing and line spacing
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{\baselineskip}
+
+% citations
+\newcommand{\citet}[1]{\textcolor{black}{\textcite{#1}}}
+\newcommand{\citep}[1]{\textcolor{black}{\parencite{#1}}}
+
+% custom figure and table captions
+\newcommand{\TableCaption}[1]{\captionof{table}{\emph{#1}}}
+\newcommand{\FigureCaption}[1]{\captionof{figure}{\emph{#1}}}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% title cases
+\newcommand{\TitleUpperCase}[1]{\MakeUppercase{\large #1}}
+\newcommand{\TitleUpperCaseBold}[1]{\MakeUppercase{\large\bfseries #1}}
+
+% heading spacing
+\titlespacing \chapter{0pt}{0pt plus 2pt minus 2pt}{14pt plus 2pt minus 2pt}
+\titlespacing \section{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing \subsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing \subsubsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+% heading formatting
+\titleformat{\chapter}[display]{\normalfont\bfseries\filcenter} {\MakeUppercase{\chaptertitlename}\ \thechapter} {1em} {\normalfont\bfseries\MakeUppercase}
+\titleformat{\section} {\normalfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection} {\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{1em}{}
+
+% table of contents
+\setcounter{tocdepth}{2}
+\renewcommand{\contentsname}{\MakeUppercase{ \hfill Table of Contents\hfill}}
+
+% page style customiztions
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+}
+
+\tolerance = 1
+\emergencystretch = \maxdimen
+\hyphenpenalty = 10000
+\hbadness = 10000
+
+\bibliography{references.bib}
+
+\begin{document}
+
+    \include{cover-page}
+
+    \include{title-page}
+
+    \include{preamble}
+    
+	\tableofcontents
+
+    \newpage
+
+    \listoffigures
+    \addcontentsline{toc}{chapter}{LIST OF FIGURES}
+
+    \newpage
+
+    \listoftables
+    \addcontentsline{toc}{chapter}{LIST OF TABLES}
+
+    \newpage
+
+    \input{abbreviations}
+
+    \pagenumbering{arabic}
+    \setcounter{secnumdepth}{5}
+    \sectionfont{\raggedright}
+
+%\mainmatter
+
+    \input{introduction}
+
+    \input{literature-review}
+
+    \input{methodology}
+
+    \input{results-and-discussion_v1}
+
+    \input{conclusion}
+    
+        \addcontentsline{toc}{chapter}{\MakeUppercase{References}}
+
+    \chapterfont{\centering}
+    \renewcommand{\bibname}{REFERENCES}
+   
+    
+    \printbibliography 
+
+    \input{appendices}
+\end{document}
